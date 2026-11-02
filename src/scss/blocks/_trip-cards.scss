@@ -1,0 +1,47 @@
+.trip-cards {
+  $root: &;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    width: 100%;
+    max-height: 550px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: box-shadow $transition-300;
+
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0px 1px 30px $color-black-70;
+    }
+  }
+
+  &__error {
+    margin: 0;
+    padding: 0;
+    color: $color-sunset-orange;
+
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 72px;
+
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &--error {
+    .floating-pagination {
+      display: none;
+    }
+    & ~ .main-btn {
+      display: none;
+    }
+  }
+}

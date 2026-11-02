@@ -1,0 +1,211 @@
+.profile {
+  padding: 10px 0;
+
+  &-list {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 31px;
+    gap: 30px;
+  }
+
+  &-item {
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+
+    .profile-btn {
+      display: none;
+    }
+
+    &:first-child {
+      padding: 14px 0 0;
+      margin: 0 0 20px;
+    }
+
+    &:not(&--password):not(&--actions) {
+      .custom-input {
+        &:not(.custom-input--editing) {
+          display: grid;
+          grid-template-columns: 240px 1fr;
+
+          gap: 33px 30px;
+
+          .custom-input__field-wrapper {
+            &:first-child {
+              position: relative;
+              grid-column: 1 / 2;
+              grid-row: 1 / span 3;
+              max-height: 240px;
+
+              .custom-input__label {
+                position: absolute;
+                bottom: -51px;
+                left: 50%;
+                transform: translateX(-35%);
+                display: inline;
+                color: $color-web-orange;
+                z-index: 12;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                cursor: pointer;
+
+                text-decoration-line: underline;
+              }
+
+              .custom-input__icon {
+                &--picture {
+                  position: absolute;
+                  top: initial;
+                  bottom: -53px;
+                  left: calc(50% - 62px);
+                  transform: translateX(-50%);
+                  cursor: pointer;
+                  height: 32px;
+                  width: 42px;
+                }
+              }
+
+              .custom-input__picture {
+                height: 240px;
+                padding: 5px 0 0;
+                transform: translateY(5px);
+              }
+
+              .custom-input__img {
+                height: 240px;
+                transform: translateY(-5px);
+              }
+            }
+
+            .custom-input__textarea {
+              padding: 2px 9px;
+            }
+          }
+        }
+      }
+    }
+    &--password {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px 20px;
+
+      .custom-input {
+        display: grid;
+        gap: 3px 20px;
+        grid-column: 1 / -1;
+        grid-row: 2;
+
+        &__field-wrapper {
+          gap: 8px;
+          &:first-child {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+          }
+          &:last-child {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+          }
+        }
+      }
+
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    &--actions {
+      display: flex;
+
+      flex-direction: row;
+      justify-content: space-between;
+
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+
+      .profile-btn {
+        display: flex;
+
+        &.btn--additionally {
+          padding: 17px 30px 12px 30px;
+          .btn-icon {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .loader--file {
+      .loader-list {
+        transform: translate(-15%);
+      }
+    }
+  }
+
+  &-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: $color-black-85;
+
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  &-icon {
+    position: absolute;
+  }
+  &-photo {
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2;
+  }
+
+  &--editing {
+    .profile-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .profile-item {
+      &:first-child {
+        padding: 0;
+        margin: 0;
+      }
+      &--password,
+      &--actions {
+        display: none;
+      }
+    }
+
+    .profile-btn {
+      display: flex;
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      top: 2px;
+      right: 3px;
+      width: 54px;
+      height: 54px;
+
+      .profile-icon {
+        width: 28px;
+        height: 26px;
+        color: $color-silver;
+        transition: color $transition-300;
+        &:hover,
+        &:focus-visible {
+          color: $color-orange-peel;
+        }
+      }
+    }
+  }
+}

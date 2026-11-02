@@ -1,0 +1,80 @@
+.auth-form {
+  $root: &;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 26px 238px;
+    min-height: 737px;
+    gap: 20px;
+
+    background: $color-white;
+
+    border: 1px solid $color-athens-gray;
+    border-radius: 10px;
+
+    .custom-input {
+      margin: 0 0 12px;
+    }
+  }
+  &__title,
+  &__error {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 54px;
+    text-align: center;
+
+    color: $color-cod-gray;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__error {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+
+    display: none;
+
+    color: $color-sunset-orange;
+  }
+
+  &--error {
+    #{$root}__form {
+      gap: 9px;
+      .custom-input {
+        margin: 0 0 25px;
+      }
+    }
+
+    #{$root}__error {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #{$root}__btn:not(.btn--additionally) {
+      padding: 17px 30px;
+    }
+  }
+
+  &--register {
+    .custom-input {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px 20px;
+
+      &__field-wrapper {
+        &:first-child {
+          grid-column: 1/-1;
+        }
+      }
+    }
+  }
+}

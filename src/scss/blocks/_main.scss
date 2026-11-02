@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 0;
+  gap: 65px;
+
+  &-btn {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+  }
+}

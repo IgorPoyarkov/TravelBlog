@@ -1,0 +1,172 @@
+.floating-pagination {
+  position: fixed;
+  width: 100px;
+  height: 60px;
+  bottom: 20%;
+  right: 0;
+  $root: &;
+  display: flex;
+  flex-direction: row;
+  border-radius: 40px;
+  overflow: hidden;
+  z-index: 12;
+  background-color: $color-athens-gray;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  border: 2px solid $color-web-orange;
+
+  background-color: $color-white;
+  color: $color-web-orange;
+  border-radius: 10px;
+
+  box-shadow: 1px 1px 10px $color-orange-peel;
+
+  transform: translateX(600px) rotateX(0deg) rotateY(0deg);
+
+  transition:
+    box-shadow $transition-300,
+    opacity $transition-300,
+    transform $transition-300;
+
+  &:hover {
+    box-shadow: 1px 1px 10px $color-web-orange;
+    animation: none;
+  }
+
+  &:has(&__item:first-child &__btn:not(&__btn--borderline):hover) {
+    box-shadow: 10px 0px 10px $color-web-orange;
+  }
+
+  &:has(&__item:last-child &__btn:not(&__btn--borderline):hover) {
+    box-shadow: -10px 0px 10px $color-web-orange;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+  }
+
+  &__item {
+    width: calc(100% / 3 - 1px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:first-child,
+    &:last-child {
+      #{$root}__btn {
+        background-color: transparent;
+        border: none;
+        align-items: center;
+
+        &::after,
+        &::before {
+          position: absolute;
+          content: "";
+          background-color: $color-alto;
+          width: 40%;
+          height: 2px;
+          left: 50%;
+          top: 62.5%;
+          transform: translate(0%, 100%) rotate(45deg);
+
+          transition: background-color $transition-300;
+        }
+
+        &::after {
+          top: 37.5%;
+          transform: translate(0%, 50%) rotate(-45deg);
+        }
+
+        &:hover {
+          transform: translate(-20%, 0%);
+
+          &::after,
+          &::before {
+            background-color: $color-web-orange;
+          }
+        }
+      }
+
+      &:last-child {
+        #{$root}__btn {
+          &::after,
+          &::before {
+            transform: translateX(50%) rotate(45deg);
+            left: 0;
+          }
+
+          &::before {
+            transform: translate(50%, 0) rotate(-45deg);
+          }
+
+          &:hover {
+            transform: translate(20%, 0%);
+          }
+        }
+      }
+    }
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    margin: -20px -20px;
+    padding: 20px 20px;
+
+    position: relative;
+    height: 20px;
+    width: 32px;
+
+    transition: transform $transition-300;
+
+    &--borderline {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  &__page {
+    display: inline-block;
+    animation-duration: 3s;
+    #{$root}:hover & {
+      animation: none;
+    }
+  }
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+
+    transform: translateX(-150px);
+    animation: animation__main 0.3s $transition-300 infinite;
+    animation-duration: 3s;
+  }
+}
+
+@keyframes animation__main {
+  0% {
+    transform: translateX(-150px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateX(-150px) rotateX(180deg) rotateY(30deg);
+  }
+  100% {
+    transform: translateX(-150px) rotateX(360deg) rotateY(0deg);
+  }
+}

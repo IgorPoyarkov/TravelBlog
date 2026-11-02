@@ -1,0 +1,207 @@
+.loader {
+  $root: &;
+  width: 100%;
+
+  &-list {
+    width: 100%;
+    display: flex;
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-icon {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: translateX(0) scale(0.5);
+    color: $color-white;
+
+    animation: shipMovement $transition-300 infinite;
+    animation-duration: 3s;
+    animation-delay: calc(var(--delay) * 0.1s);
+  }
+
+  &--pendulum {
+    #{$root}-list {
+      position: relative;
+      width: calc(var(--size) * 1px);
+      height: calc((var(--size) / var(--count)) * 1px);
+      gap: 2px;
+    }
+
+    #{$root}-item {
+      position: relative;
+      z-index: 1;
+      height: calc((100%));
+      width: calc((100% / var(--count)));
+      transform: translate(0, 0);
+      overflow: hidden;
+      background-color: transparent;
+
+      &::before {
+        position: absolute;
+        content: "";
+        border-radius: 50%;
+        background-color: transparent;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        transform: scale(1);
+
+        animation: leftBeforePendulumMovement $transition-300 infinite;
+      }
+
+      &--right {
+        &::before {
+          background-color: rgba(
+            0,
+            0,
+            0,
+            calc(1 / (var(--count) - var(--index) + 1))
+          );
+          animation: rightBeforePendulumMovement $transition-300 infinite;
+        }
+      }
+
+      &:first-child {
+        transform: translate(-100%, -10%) scale(1);
+        animation: leftPendulumMovement $transition-300 infinite;
+      }
+
+      &:last-child {
+        transform: translate(100%, -10%) scale(1);
+        animation: rightPendulumMovement $transition-300 infinite;
+      }
+    }
+    #{$root}-icon {
+      display: none;
+    }
+  }
+
+  &--file {
+    #{$root}-list {
+      position: relative;
+      width: calc(var(--size) * 1px);
+      max-width: fit-content;
+      transform: translateX(-40%);
+      height: calc((var(--size) / var(--count)) * 1px);
+      gap: 1px;
+      overflow: hidden;
+    }
+
+    #{$root}-item {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      width: calc(100% / var(--count));
+      height: 100%;
+      flex-shrink: 0;
+    }
+
+    #{$root}-icon {
+      animation-duration: 0.1s;
+      color: $color-sunset-orange;
+    }
+  }
+}
+
+@keyframes shipMovement {
+  0% {
+    color: $color-web-orange;
+    transform: translateX(0) scale(0.5);
+  }
+  10% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes leftPendulumMovement {
+  0% {
+    transform: translate(-100%, -10%) scale(1);
+  }
+  25% {
+    transform: translate(-70%, -10%);
+  }
+  50% {
+    transform: translate(0%, 0%);
+  }
+  75% {
+    transform: translate(-70%, -10%);
+  }
+  100% {
+    transform: translate(-100%, -10%) scale(1);
+  }
+}
+@keyframes rightPendulumMovement {
+  0% {
+    transform: translate(100%, -10%) scale(1);
+  }
+  25% {
+    transform: translate(70%, -10%);
+  }
+  50% {
+    transform: translate(0%, 0%);
+  }
+  75% {
+    transform: translate(70%, -10%);
+  }
+  100% {
+    transform: translate(100%, -10%) scale(1);
+  }
+}
+
+@keyframes leftBeforePendulumMovement {
+  0% {
+    background-color: $color-black;
+    opacity: calc(1 / var(--index));
+  }
+  50% {
+    background-color: $color-black;
+    opacity: calc(1.5 / var(--index));
+  }
+  70% {
+    background-color: $color-black;
+    opacity: calc(1.2 / var(--index));
+  }
+  100% {
+    background-color: $color-black;
+    opacity: calc(1 / var(--index));
+  }
+}
+
+@keyframes rightBeforePendulumMovement {
+  0% {
+    background-color: $color-black;
+    opacity: calc(1 / (var(--count) - var(--index) + 1));
+  }
+  50% {
+    background-color: $color-black;
+    opacity: calc(1.5 / (var(--count) - var(--index) + 1));
+  }
+  70% {
+    background-color: $color-black;
+    opacity: calc(1.2 / (var(--count) - var(--index) + 1));
+  }
+  100% {
+    background-color: $color-black;
+    opacity: calc(1 / (var(--count) - var(--index) + 1));
+  }
+}

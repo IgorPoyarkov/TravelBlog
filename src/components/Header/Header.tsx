@@ -43,7 +43,7 @@ const Header = ({}: HeaderProps) => {
       <div className="header-picture">
         <img
           className="header-img"
-          src="../../../public/mainImg.png"
+          src={asset("/mainImg.png")}
           alt="Основная картинка сайта"
         />
       </div>

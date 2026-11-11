@@ -9,7 +9,9 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "start": "node server.js",
-    "dev:all": "concurrently -k \"node server.js\" \"vite\""
+    "dev:all": "concurrently -k \"node server.js\" \"vite\"",
+    "prebuild": "node scripts/generate-mock-db.mjs",
+    "predev": "node scripts/generate-mock-db.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^6.0.0",

@@ -1,11 +1,16 @@
 import axios from "axios";
+import { mockAdapter } from "./mockAdapter";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
+  baseURL: API_URL || "",
   timeout: 3000,
   headers: {
     "Content-Type": "application/json",
   },
+  // В demo-режиме запросы перехватывает mock-адаптер вместо сети
+  ...(API_URL ? {} : { adapter: mockAdapter }),
 });
 
 api.interceptors.request.use((config) => {

@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useComments, usePost } from "../../servises/Posts/post.api";
 import useUtils from "../../hooks/useUtils";
 import Loader from "../UI/Loader/Loader";
+import { asset } from "../../utils/asset";
 
 interface TravelStoryProps {}
 
@@ -69,7 +70,7 @@ const TravelStory = ({}: TravelStoryProps) => {
               onClick={() => navigate("/")}
             >
               <svg className="btn-icon ">
-                <use href={"/sprite.svg#arrow__icon"} />
+                <use href={asset("/sprite.svg#arrow__icon")} />
               </svg>
               Назад
             </button>

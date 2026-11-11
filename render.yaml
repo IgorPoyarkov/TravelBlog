@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: travelblog-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /posts
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

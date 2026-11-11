@@ -6,10 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CommentSchema, type Comment } from "../../servises/Posts/post.schema";
 import { useCreateComment } from "../../servises/Posts/post.api";
 import Modal from "../UI/Modal/Modal";
+import { asset } from "../../utils/asset";
 
 interface CommentProps {}
 
-const Comment = ({}: CommentProps) => {
+const CommentForm = ({}: CommentProps) => {
   const { id } = useParams<{ id: string }>();
   const currentConfigFields = () => {
     const config = CustomInputConfigData.find(
@@ -75,7 +76,7 @@ const Comment = ({}: CommentProps) => {
               disabled={isPending}
             >
               <svg className="btn-icon ">
-                <use href={"/sprite.svg#arrow__icon"} />
+                <use href={asset("/sprite.svg#arrow__icon")} />
               </svg>
               Назад
             </button>
@@ -93,4 +94,4 @@ const Comment = ({}: CommentProps) => {
   );
 };
 
-export default Comment;
+export default CommentForm;

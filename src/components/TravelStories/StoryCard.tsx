@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCreatePost } from "../../servises/Posts/post.api";
 import Modal from "../UI/Modal/Modal";
+import { asset } from "../../utils/asset";
 
 interface StoryCardProps {}
 
@@ -70,7 +71,7 @@ const StoryCard = ({}: StoryCardProps) => {
               disabled={isPending}
             >
               <svg className="btn-icon ">
-                <use href={"/sprite.svg#arrow__icon"} />
+                <use href={asset("/sprite.svg#arrow__icon")} />
               </svg>
               Назад
             </button>

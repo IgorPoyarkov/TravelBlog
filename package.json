@@ -8,14 +8,16 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "backend": "json-server-auth db.json --port 3000",
-    "start": "concurrently \"npm run dev\" \"npm run backend\""
+    "start": "node server.js",
+    "dev:all": "concurrently -k \"node server.js\" \"vite\""
   },
   "dependencies": {
     "@hookform/resolvers": "^6.0.0",
     "@tanstack/react-query": "^5.104.5",
     "@tanstack/react-query-devtools": "^5.104.5",
     "axios": "^1.20.0",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-hook-form": "^7.90.0",
@@ -29,8 +31,6 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "concurrently": "^10.0.6",
-    "json-server": "^0.17.4",
-    "json-server-auth": "^2.1.0",
     "oxlint": "^1.88.0",
     "sass": "^1.106.1",
     "typescript": "~6.0.3",

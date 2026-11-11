@@ -1,4 +1,5 @@
 import useUtils from "../../../hooks/useUtils";
+import { asset } from "../../../utils/asset";
 
 interface LoaderProps {
   count?: number;
@@ -32,7 +33,7 @@ const Loader = ({ count = 12, size = 320, modifer = "" }: LoaderProps) => {
             key={index}
           >
             <svg className="loader-icon">
-              <use href="/sprite.svg#logo-icon" />
+              <use href={asset("/sprite.svg#logo-icon")} />
             </svg>
           </li>
         ))}

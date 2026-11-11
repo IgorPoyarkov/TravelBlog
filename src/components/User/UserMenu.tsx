@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useLogout, useUser } from "../../servises/User/user.api";
+import { asset } from "../../utils/asset";
 
 interface UserMenuProps {}
 
@@ -58,7 +59,7 @@ const UserMenu = ({}: UserMenuProps) => {
                 onClick={openDropMenu}
               >
                 <svg className="user-menu__icon">
-                  <use href="/sprite.svg#user-icon" />
+                  <use href={asset("/sprite.svg#user-icon")} />
                 </svg>
               </button>
             </li>

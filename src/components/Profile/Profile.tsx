@@ -14,6 +14,7 @@ import {
   type StoryUserInfoPassword,
 } from "../../servises/User/user.schema";
 import Loader from "../UI/Loader/Loader";
+import { asset } from "../../utils/asset";
 
 interface ProfileProps {}
 
@@ -144,7 +145,7 @@ const Profile = ({}: ProfileProps) => {
               onClick={() => navigate("/profile")}
             >
               <svg className="profile-icon">
-                <use href="/sprite.svg#editing__icon" />
+                <use href={asset("/sprite.svg#editing__icon")} />
               </svg>
             </button>
           </li>
@@ -165,7 +166,7 @@ const Profile = ({}: ProfileProps) => {
               onClick={() => navigate("/profile?mode=editing")}
             >
               <svg className="btn-icon ">
-                <use href={"/sprite.svg#arrow__icon"} />
+                <use href={asset("/sprite.svg#arrow__icon")} />
               </svg>
               Назад
             </button>

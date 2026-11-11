@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import UserMenu from "../User/UserMenu";
 import { useUser } from "../../servises/User/user.api";
+import { asset } from "../../utils/asset";
 
 interface HeaderProps {}
 
@@ -19,7 +20,7 @@ const Header = ({}: HeaderProps) => {
             >
               <span className="header-navigation__link-name">Travel</span>
               <svg className="header-navigation__icon">
-                <use href="/sprite.svg#logo-icon" />
+                <use href={asset("/sprite.svg#logo-icon")} />
               </svg>
             </NavLink>
           </li>

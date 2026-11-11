@@ -8,6 +8,7 @@ import type {
 import type { FieldsCustomInput } from "../Input/CustomInputConfig";
 import useUtils from "../../../hooks/useUtils";
 import Loader from "../Loader/Loader";
+import { asset } from "../../../utils/asset";
 
 interface CustomInputProps {
   fieldsCustomInput: FieldsCustomInput[];
@@ -110,7 +111,7 @@ const CustomInput = ({
               {customFieldClass !== "" && field.type !== "file" && ":"}
               {field.required && (
                 <svg className="custom-input__icon">
-                  <use href="/sprite.svg#required-field__icon" />
+                  <use href={asset("/sprite.svg#required-field__icon")} />
                 </svg>
               )}
             </label>
@@ -202,7 +203,7 @@ const CustomInput = ({
                 <svg
                   className={`custom-input__icon custom-input__icon--picture ${isFileUploaded ? "custom-input__icon--success" : ""} ${isConverting ? "custom-input__icon--spinning" : ""}`}
                 >
-                  <use href={`/sprite.svg#${svgFile}`} />
+                  <use href={asset(`/sprite.svg#${svgFile}`)} />
                 </svg>
               </>
             )}
